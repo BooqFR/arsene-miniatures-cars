@@ -4,7 +4,6 @@ import Logout from './components/Logout';
 import { auth } from './firebase';
 
 function App() {
-  console.log("auth", auth)
   return (
     <div className="App">
       <header className="App-header">

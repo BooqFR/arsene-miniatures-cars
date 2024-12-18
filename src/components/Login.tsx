@@ -20,15 +20,15 @@ const Login = () => {
       <input
         type="email"
         value={email}
-        className='bg-red-100'
-        onChange={(e) => setEmail(e.target.value)}
+        className="bg-red-100"
+        onChange={e => setEmail(e.target.value)}
         placeholder="Email"
       />
       <input
         type="password"
         value={password}
-        className='bg-red-100'
-        onChange={(e) => setPassword(e.target.value)}
+        className="bg-red-100"
+        onChange={e => setPassword(e.target.value)}
         placeholder="Password"
       />
       <button onClick={handleLogin}>Login</button>

@@ -1,6 +1,6 @@
-import { auth } from '@firebase/firebase'
 import { useMutation } from '@tanstack/react-query'
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { auth } from 'src/firebase/firebase'
 
 export default function useAuth() {
   const useLogin = () =>

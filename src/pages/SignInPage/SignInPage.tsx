@@ -1,5 +1,5 @@
+import { useAuth } from '@hooks'
 import { useState } from 'react'
-import { useAuth } from '../../hooks'
 
 export default function SignInPage() {
   // States

@@ -1,8 +1,9 @@
-import { auth } from '@firebase/firebase'
-import { HomePage, SignInPage } from '@pages/index'
-import userAtom from '@store/atoms/user'
+import { AppRouter, SignInPage } from '@pages'
 import { useAtom } from 'jotai'
 import { useState } from 'react'
+import { RouterProvider } from 'react-router-dom'
+import { auth } from 'src/firebase/firebase'
+import userAtom from 'src/store/atoms/user'
 
 export default function RootPage() {
   // Store
@@ -21,13 +22,15 @@ export default function RootPage() {
     }
   })
 
+  // Handle Loading
   if (isLoading) {
     return null
   }
 
-  return (
-    <div className="App">
-      <header className="App-header">{userAtomValue ? <HomePage /> : <SignInPage />}</header>
-    </div>
-  )
+  // Handle Not Logged In
+  if (!userAtomValue) {
+    return <SignInPage />
+  }
+
+  return <RouterProvider router={AppRouter} />
 }

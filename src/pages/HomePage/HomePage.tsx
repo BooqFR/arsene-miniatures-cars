@@ -1,4 +1,4 @@
-import { useAuth } from '@hooks/index'
+import { useAuth } from '@hooks'
 
 export default function HomePage() {
   // Hooks

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { RootPage } from '@pages/index'
+import { RootPage } from '@pages'
 
 const queryClient = new QueryClient()
 

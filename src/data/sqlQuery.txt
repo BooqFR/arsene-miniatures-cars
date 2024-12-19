@@ -1,0 +1,48 @@
+//* SQL Query to extract formatted data from the database *//
+
+SELECT 
+    r.event_date,
+
+    JSON_ARRAYAGG(
+        JSON_OBJECT(
+            'fname', d.fname,
+            'lname', d.lname,
+            'country', d.country
+        )
+    ) AS drivers,
+        
+    JSON_OBJECT(
+        'car_class', c.car_class,
+        'car_engine', c.car_engine,
+        'car_chassis', c.car_chassis,
+        'nbr', cn.nbr
+    ) AS car,
+
+    JSON_OBJECT(
+        'pos', res.pos,
+        'laps', res.laps,
+        'distance', res.distance,
+        'racing_time', res.racing_time,
+        'reason', res.reason
+    ) AS result,
+
+    JSON_OBJECT(
+        'title', tm.title,
+        'country', tm.country,
+        'private_entrant', tm.private_entrant
+    ) AS team
+
+FROM results res
+
+JOIN races r ON r.id = res.race_id
+JOIN car_numbers cn ON cn.race_id = r.id
+JOIN cars c ON c.id = cn.car_id
+JOIN driver_results dr ON dr.result_id = res.id
+JOIN drivers d ON d.id = dr.driver_id
+JOIN team_results tr ON res.id = tr.result_id
+JOIN teams tm ON tr.team_id = tm.id
+
+WHERE res.car_id = cn.id
+
+GROUP BY r.event_date, c.car_class, c.car_engine, c.car_chassis, cn.nbr, tm.id, 
+         res.pos, res.laps, res.distance, res.racing_time, res.reason;

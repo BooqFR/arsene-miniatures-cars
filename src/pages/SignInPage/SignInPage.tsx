@@ -1,17 +1,19 @@
 import { useState } from 'react'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../firebase'
+import { useAuth } from '../../hooks'
 
-const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+export default function SignInPage() {
+  // States
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
-  const handleLogin = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password)
-    } catch (error: any) {
-      setError(error.message)
+  // Hooks
+  const { useLogin } = useAuth()
+  const { mutate: login, isError } = useLogin()
+
+  // Handle Login
+  const handleLogin = () => {
+    if (!!email && !!password) {
+      login({ email: email, password: password })
     }
   }
 
@@ -32,9 +34,7 @@ const Login = () => {
         placeholder="Password"
       />
       <button onClick={handleLogin}>Login</button>
-      {error && <p>{error}</p>}
+      {isError && <p>Une erreur est survenue.</p>}
     </div>
   )
 }
-
-export default Login

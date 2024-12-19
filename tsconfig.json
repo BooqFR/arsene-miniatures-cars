@@ -9,7 +9,14 @@
     "outDir": "./build",
     "lib": ["ESNext", "dom"],
     "types": ["node", "jest"],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@store/*": ["./src/store/*"],
+      "@firebase/*": ["./src/firebase/*"]
+    }
   },
   "exclude": ["node_modules"],
   "include": ["src"]

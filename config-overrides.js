@@ -9,7 +9,8 @@ module.exports = function override(config) {
     '@hooks': './src/hooks/index',
     '@hooks/*': './src/hooks/*',
     '@pages': './src/pages/index',
-    '@pages/*': './src/pages/*'
+    '@pages/*': './src/pages/*',
+    '@store': './src/store/atoms/index'
   })(config)
 
   return config

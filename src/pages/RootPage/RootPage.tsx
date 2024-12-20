@@ -1,9 +1,9 @@
 import { AppRouter, SignInPage } from '@pages'
+import { userAtom } from '@store'
 import { useAtom } from 'jotai'
 import { useState } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { auth } from 'src/firebase/firebase'
-import userAtom from 'src/store/atoms/user'
 
 export default function RootPage() {
   // Store

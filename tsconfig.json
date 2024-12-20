@@ -18,7 +18,8 @@
       "@hooks": ["./src/hooks/index"],
       "@hooks/*": ["./src/hooks/*"],
       "@pages": ["./src/pages/index"],
-      "@pages/*": ["./src/pages/*"]
+      "@pages/*": ["./src/pages/*"],
+      "@store": ["./src/store/atoms/index"]
     }
   },
   "exclude": ["node_modules"],

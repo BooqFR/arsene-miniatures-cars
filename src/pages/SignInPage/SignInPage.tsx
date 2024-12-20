@@ -1,5 +1,5 @@
 import { Button, Input } from '@components'
-import { LockClosedIcon } from '@heroicons/react/24/solid'
+import { LockClosedIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { useAuth } from '@hooks'
 import { useState } from 'react'
 
@@ -10,7 +10,7 @@ export default function SignInPage() {
 
   // Hooks
   const { useLogin } = useAuth()
-  const { mutate: login, isError } = useLogin()
+  const { mutate: login, isLoading, isError } = useLogin()
 
   // Handle Login
   const handleLogin = () => {
@@ -22,7 +22,14 @@ export default function SignInPage() {
   return (
     <div className="flex w-screen h-screen items-center justify-center">
       <div className="flex flex-col gap-2 items-center max-w-[600px] w-full">
-        <Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" label="Email" />
+        <Input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          placeholder="Email"
+          label="Email"
+          icon={<UserCircleIcon />}
+        />
         <Input
           type="password"
           value={password}
@@ -31,7 +38,7 @@ export default function SignInPage() {
           label="Password"
           icon={<LockClosedIcon />}
         />
-        <Button text="Login" onPress={handleLogin} fullWidth size="lg" className="mt-4" />
+        <Button text="Login" onPress={handleLogin} isLoading={isLoading} fullWidth size="lg" className="mt-4" />
         {isError && <p>Une erreur est survenue.</p>}
       </div>
     </div>

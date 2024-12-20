@@ -1,5 +1,5 @@
 import { Button, Input } from '@components'
-import { LockClosedIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { LockClosedIcon } from '@heroicons/react/24/solid'
 import { useAuth } from '@hooks'
 import { useState } from 'react'
 
@@ -22,14 +22,7 @@ export default function SignInPage() {
   return (
     <div className="flex w-screen h-screen items-center justify-center">
       <div className="flex flex-col gap-2 items-center max-w-[600px] w-full">
-        <Input
-          type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          placeholder="Email"
-          label="Email"
-          icon={<UserCircleIcon />}
-        />
+        <Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" label="Email" />
         <Input
           type="password"
           value={password}

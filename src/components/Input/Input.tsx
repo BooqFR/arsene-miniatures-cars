@@ -46,7 +46,10 @@ export default function Input({
           id={label}
           onChange={onChange}
           value={value}
-          className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5"
+          className={clsx(
+            icon ? 'rounded-r-lg' : 'rounded-lg',
+            '  bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5'
+          )}
           placeholder={placeholder}
         />
       </div>

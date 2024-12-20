@@ -1,3 +1,4 @@
+import { Button } from '@components'
 import { useAuth } from '@hooks'
 import { useState } from 'react'
 
@@ -33,7 +34,8 @@ export default function SignInPage() {
         onChange={e => setPassword(e.target.value)}
         placeholder="Password"
       />
-      <button onClick={handleLogin}>Login</button>
+
+      <Button text="Login" onPress={handleLogin} />
       {isError && <p>Une erreur est survenue.</p>}
     </div>
   )

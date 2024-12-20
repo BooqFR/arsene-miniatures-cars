@@ -1,4 +1,5 @@
-import { Button } from '@components'
+import { Button, Input } from '@components'
+import { LockClosedIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { useAuth } from '@hooks'
 import { useState } from 'react'
 
@@ -19,24 +20,27 @@ export default function SignInPage() {
   }
 
   return (
-    <div>
-      <input
-        type="email"
-        value={email}
-        className="bg-red-100"
-        onChange={e => setEmail(e.target.value)}
-        placeholder="Email"
-      />
-      <input
-        type="password"
-        value={password}
-        className="bg-red-100"
-        onChange={e => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-
-      <Button text="Login" onPress={handleLogin} />
-      {isError && <p>Une erreur est survenue.</p>}
+    <div className="flex w-screen h-screen items-center justify-center">
+      <div className="flex flex-col gap-2 items-center max-w-[600px] w-full">
+        <Input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          placeholder="Email"
+          label="Email"
+          icon={<UserCircleIcon />}
+        />
+        <Input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder="Password"
+          label="Password"
+          icon={<LockClosedIcon />}
+        />
+        <Button text="Login" onPress={handleLogin} fullWidth size="lg" className="mt-4" />
+        {isError && <p>Une erreur est survenue.</p>}
+      </div>
     </div>
   )
 }

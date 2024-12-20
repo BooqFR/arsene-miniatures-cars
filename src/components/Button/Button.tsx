@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 
 type ButtonPros = {
   className?: string
+  fullWidth?: boolean
   icon?: ReactNode
   iconPosition?: 'left' | 'right' | 'only'
   isDisabled?: boolean
@@ -18,7 +19,7 @@ type ButtonPros = {
 
 // Common Classes
 const commonClasses =
-  'font-medium text-center inline-flex items-center rounded-lg transition-all ease-in-out duration-300 outline-none disabled:!cursor-not-allowed disabled:!opacity-40'
+  'font-medium text-center inline-flex justify-center items-center rounded-lg transition-all ease-in-out duration-300 outline-none disabled:!cursor-not-allowed disabled:!opacity-40'
 
 // Button Classes based on 'size' props
 const sizeVariants = {
@@ -37,6 +38,7 @@ const variants = {
 
 export default function Button({
   className,
+  fullWidth = false,
   icon,
   iconPosition = 'left',
   isDisabled = false,
@@ -48,7 +50,7 @@ export default function Button({
   variant = 'primary'
 }: ButtonPros) {
   // ClassNames
-  const classNames = clsx(commonClasses, sizeVariants[size], variants[variant], className)
+  const classNames = clsx(commonClasses, sizeVariants[size], variants[variant], fullWidth && 'w-full', className)
 
   return (
     <button type={type} className={classNames} onClick={onPress} disabled={isDisabled}>

@@ -10,7 +10,7 @@ export default function SignInPage() {
 
   // Hooks
   const { useLogin } = useAuth()
-  const { mutate: login, isLoading, isError } = useLogin()
+  const { mutate: login, isPending, isError } = useLogin()
 
   // Handle Login
   const handleLogin = () => {
@@ -38,7 +38,7 @@ export default function SignInPage() {
           label="Password"
           icon={<LockClosedIcon />}
         />
-        <Button text="Login" onPress={handleLogin} isLoading={isLoading} fullWidth size="lg" className="mt-4" />
+        <Button text="Login" onPress={handleLogin} isLoading={isPending} fullWidth size="lg" className="mt-4" />
         {isError && <p>Une erreur est survenue.</p>}
       </div>
     </div>

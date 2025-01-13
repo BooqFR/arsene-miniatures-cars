@@ -53,7 +53,7 @@ export default function Input({
           className={clsx(
             icon ? 'rounded-r-lg' : 'rounded-lg',
             type === 'password' && 'pr-10',
-            '  bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5'
+            'bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5'
           )}
           placeholder={placeholder}
         />
